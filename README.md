@@ -2,7 +2,7 @@
 
 A minimal Express.js application demonstrating drizzle-cube integration with a simple analytics dashboard.
 
-[Github Repository](https://github.com/drizzle-cube-express)
+[Github Repository](https://github.com/cliftonc/drizzle-cube-express)
 
 ## Features
 
