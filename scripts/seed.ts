@@ -15,18 +15,6 @@ function isNeonUrl(url: string): boolean {
   return url.includes('.neon.tech') || url.includes('neon.database')
 }
 
-// Create database connection factory
-function createDatabase(databaseUrl: string) {
-  if (isNeonUrl(databaseUrl)) {
-    console.log('🚀 Connecting to Neon serverless database')
-    const sql = neon(databaseUrl)
-    return drizzleNeon(sql, { schema })
-  } else {
-    console.log('🐘 Connecting to local PostgreSQL database')
-    const client = postgres(databaseUrl)
-    return drizzle(client, { schema })
-  }
-}
 
 // Sample data
 const sampleDepartments = [
@@ -107,7 +95,7 @@ function generateProductivityData(insertedEmployees: any[]): any[] {
     const dayOfWeek = date.getDay()
     const isWeekend = dayOfWeek === 0 || dayOfWeek === 6
     
-    insertedEmployees.forEach((employee, index) => {
+    insertedEmployees.forEach((employee, _index) => {
       if (!isWeekend && employee.active) {
         // Only add data for work days and active employees
         const baseLinesOfCode = employee.departmentId === 1 ? 200 : 0 // Only engineering writes code

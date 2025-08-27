@@ -16,12 +16,12 @@ const port = parseInt(process.env.PORT || '4001')
 const connectionString = process.env.DATABASE_URL || 'postgresql://drizzle_user:drizzle_pass123@localhost:54922/drizzle_cube_db'
 
 // Auto-detect database type
-function isNeonUrl(url) {
+function isNeonUrl(url: string) {
   return url.includes('.neon.tech') || url.includes('neon.database')
 }
 
 // Create database connection
-function createDatabase(databaseUrl) {
+function createDatabase(databaseUrl: string) {
   if (isNeonUrl(databaseUrl)) {
     console.log('🚀 Connecting to Neon serverless database')
     const sql = neon(databaseUrl)
@@ -43,7 +43,7 @@ app.use(cors({
 }))
 
 // Simple security context (demo user)
-const extractSecurityContext = async (req, res) => {
+const extractSecurityContext = async (_req: any, _res: any) => {
   return {
     organisationId: 1,
     userId: 1
@@ -53,7 +53,7 @@ const extractSecurityContext = async (req, res) => {
 // Create and mount cube routes
 const cubeRouter = createCubeRouter({
   cubes: allCubes,
-  drizzle: db,
+  drizzle: db as any,
   schema,
   extractSecurityContext,
   engineType: 'postgres'
@@ -65,7 +65,7 @@ app.use('/', cubeRouter)
 app.use(express.static('client/dist'))
 
 // Root endpoint
-app.get('/api/info', (req, res) => {
+app.get('/api/info', (_req, res) => {
   res.json({
     name: 'Drizzle Cube Express Example',
     version: '1.0.0',
@@ -79,7 +79,7 @@ app.get('/api/info', (req, res) => {
 })
 
 // Health check
-app.get('/health', (req, res) => {
+app.get('/health', (_req, res) => {
   res.json({ status: 'ok' })
 })
 

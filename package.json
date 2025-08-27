@@ -18,12 +18,13 @@
     "docker:reset": "docker-compose down -v && docker-compose up -d",
     "db:migrate": "tsx scripts/migrate.ts",
     "db:seed": "tsx scripts/seed.ts",
-    "db:generate": "drizzle-kit generate"
+    "db:generate": "drizzle-kit generate",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.0.1",
     "cors": "^2.8.5",
-    "drizzle-cube": "^0.1.17",
+    "drizzle-cube": "^0.1.19",
     "drizzle-orm": "^0.44.4",
     "express": "^5.1.0",
     "postgres": "^3.4.0",
