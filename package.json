@@ -39,6 +39,7 @@
     "@types/react-dom": "^19.1.9",
     "concurrently": "^9.0.0",
     "drizzle-kit": "^0.31.4",
+    "rollup": "^4.24.0",
     "tsx": "^4.20.5",
     "typescript": "^5.0.0"
   },
