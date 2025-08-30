@@ -19,7 +19,8 @@
     "db:migrate": "tsx scripts/migrate.ts",
     "db:seed": "tsx scripts/seed.ts",
     "db:generate": "drizzle-kit generate",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "ci:all": "npm ci && cd client && npm ci"
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.0.1",
