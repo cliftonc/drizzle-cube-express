@@ -111,9 +111,7 @@ export default function App() {
                 Build custom queries using the interactive query builder
               </p>
             </div>
-            <div className="bg-white rounded-lg shadow-sm border">
-              <QueryBuilder />
-            </div>
+            <QueryBuilder />
           </div>
         )}
       </div>
