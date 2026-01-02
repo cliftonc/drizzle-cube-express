@@ -27,7 +27,7 @@
     "cors": "^2.8.5",
     "d3": "^7.9.0",
     "dagre": "^0.8.5",
-    "drizzle-cube": "^0.2.15",
+    "drizzle-cube": "^0.2.16",
     "drizzle-orm": "^0.45.0",
     "express": "^5.0.0",
     "postgres": "^3.4.0",
