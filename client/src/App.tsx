@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { QueryBuilder, AnalyticsDashboard, CubeProvider } from 'drizzle-cube/client'
+import { AnalysisBuilder, AnalyticsDashboard, CubeProvider } from 'drizzle-cube/client'
 import { dashboardConfig as defaultDashboardConfig } from './dashboard-config'
 
 export default function App() {
@@ -67,7 +67,7 @@ export default function App() {
                     : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100'
                 }`}
               >
-                Query Builder
+                Analysis Builder
               </button>
             </div>
           </div>
@@ -95,7 +95,7 @@ export default function App() {
                 View employee and productivity metrics across departments. Use the Edit Mode toggle to customize layout and charts.
               </p>
             </div>
-            <AnalyticsDashboard 
+            <AnalyticsDashboard
               config={dashboardConfig}
               editable={true}
               onConfigChange={saveDashboardConfig}
@@ -105,13 +105,13 @@ export default function App() {
           <div>
             <div className="mb-6">
               <h2 className="text-lg font-medium text-gray-900 mb-2">
-                Query Builder
+                Analysis Builder
               </h2>
               <p className="text-sm text-gray-600">
-                Build custom queries using the interactive query builder
+                Build custom queries using the interactive analysis builder
               </p>
             </div>
-            <QueryBuilder />
+            <AnalysisBuilder />
           </div>
         )}
       </div>
