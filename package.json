@@ -6,13 +6,11 @@
   "scripts": {
     "dev": "concurrently \"npm:dev:server\" \"npm:dev:client\"",
     "dev:server": "tsx watch server.ts",
-    "dev:client": "cd client && npm run dev",
+    "dev:client": "cd client && vite",
     "build": "npm run build:client",
-    "build:client": "cd client && npm run build",
+    "build:client": "cd client && tsc && vite build",
     "start": "tsx server.ts",
-    "setup": "npm run install:server && npm run docker:up && sleep 5 && npm run db:migrate && npm run db:seed && npm run install:client",
-    "install:client": "cd client && npm install",
-    "install:server": "npm install --legacy-peer-deps",
+    "setup": "npm install --legacy-peer-deps && npm run docker:up && sleep 5 && npm run db:migrate && npm run db:seed",
     "docker:up": "docker-compose up -d",
     "docker:down": "docker-compose down",
     "docker:reset": "docker-compose down -v && docker-compose up -d",
@@ -20,10 +18,11 @@
     "db:seed": "tsx scripts/seed.ts",
     "db:generate": "drizzle-kit generate",
     "typecheck": "tsc --noEmit",
-    "ci:all": "npm ci && cd client && npm ci"
+    "ci:all": "npm ci"
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.0.1",
+    "@nivo/heatmap": "^0.99.0",
     "cors": "^2.8.5",
     "d3": "^7.9.0",
     "dagre": "^0.8.5",
@@ -32,22 +31,35 @@
     "express": "^5.0.0",
     "postgres": "^3.4.0",
     "react": "^18.0.0",
+    "react-dom": "^18.0.0",
     "react-grid-layout": "^2.1.1",
     "react-is": "^19.2.3",
+    "react-resizable": "^3.0.5",
     "reactflow": "^11.11.4",
     "recharts": "^3.5.1"
   },
   "devDependencies": {
+    "@tailwindcss/postcss": "^4.0.0",
     "@types/cors": "^2.8.0",
     "@types/express": "^5.0.0",
     "@types/node": "^22.0.0",
-    "@types/react": "^19.1.12",
-    "@types/react-dom": "^19.1.9",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@types/react-grid-layout": "^1.3.0",
+    "@vitejs/plugin-react": "^5.0.0",
+    "autoprefixer": "^10.4.0",
     "concurrently": "^9.0.0",
     "drizzle-kit": "^0.31.4",
+    "postcss": "^8.4.0",
     "rollup": "^4.24.0",
+    "tailwindcss": "^4.0.0",
     "tsx": "^4.20.5",
-    "typescript": "^5.0.0"
+    "typescript": "^5.0.0",
+    "vite": "^7.0.0"
+  },
+  "optionalDependencies": {
+    "lightningcss-linux-x64-gnu": "^1.30.0",
+    "@rollup/rollup-linux-x64-gnu": "^4.24.0"
   },
   "keywords": [
     "analytics",
